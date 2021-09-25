@@ -9,6 +9,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         UtilityFunctions ul = new UtilityFunctions();
 
+        //Subset Problem
+
+        int[] array = ul.inputArray(sc);
+        int sum = sc.nextInt();
+
+        SubsetProblem sP = new SubsetProblem();
+
+        System.out.println(sP.subsetProblem(array, sum, array.length-1, ul.initializeDP(array.length-1, sum, -1)));
+
+        /**
         //Longest Common Subsequence
 
         String first = sc.next();
@@ -19,9 +29,9 @@ public class Main {
         LongestCommonSubsequence lcs = new LongestCommonSubsequence();
 
         System.out.println(lcs.lcs(a, a.length, b, b.length, ul.initializeDP(a.length, b.length, -1)));
+        **/
 
         /**
-
         //Knapsack 0/1
 
         int[] weight_elements = ul.inputArray(sc);
@@ -64,7 +74,6 @@ public class Main {
                         ul.initializeSingleDP(capacity, -1)
                 )
         );
-
          **/
    }
 }
