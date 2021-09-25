@@ -4,37 +4,36 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void printArray(String arrayName, int array[]) {
-        System.out.println("\n"+arrayName+"\n");
-        for (int i=0; i<array.length; i++) {
-            System.out.println(array[i]+" ");
-        }
-        System.out.println("\n");
-    }
-
-    public static int[] inputArray(Scanner sc) {
-        String line = sc.nextLine();
-        String[] tokens = line.split(" ");
-        int[] array = new int[tokens.length];
-        for (int i=0; i< array.length; i++)
-            array[i]=Integer.parseInt(tokens[i]);
-        return array;
-    }
-
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        UtilityFunctions ul = new UtilityFunctions();
+
+        //Longest Common Subsequence
+
+        String first = sc.next();
+        String second = sc.next();
+        char[] a = first.toCharArray();
+        char[] b = second.toCharArray();
+
+        LongestCommonSubsequence lcs = new LongestCommonSubsequence();
+
+        System.out.println(lcs.lcs(a, a.length, b, b.length, ul.initializeDP(a.length, b.length, -1)));
+
+        /**
 
         //Knapsack 0/1
-        //Read input
-        int[] weight_elements = inputArray(sc);
-        int[] weight_values = inputArray(sc);
+
+        int[] weight_elements = ul.inputArray(sc);
+        int[] weight_values = ul.inputArray(sc);
         int capacity = sc.nextInt();
-        //Verify input is taken correctly
-        printArray("Weight Elements",weight_elements);
-        printArray("Weight Values",weight_values);
+
+        ul.printArray("Weight Elements",weight_elements);
+        ul.printArray("Weight Values",weight_values);
         System.out.println(capacity);
+
         Knapsack obj = new Knapsack();
+
         //Print the value of Knapsack Bottom-Up Approach
         System.out.println( '\n'+
                 obj.bottomUpKnapsack(
@@ -43,6 +42,7 @@ public class Main {
                         capacity
                 )
         );
+
         //Print the value of Knapsack Top-Down Approach
         System.out.println( '\n'+
                 obj.topDownKnapsack(
@@ -50,9 +50,10 @@ public class Main {
                         weight_values,
                         capacity,
                         weight_elements.length,
-                        obj.initializeDP(weight_elements.length, capacity, -1)
+                        ul.initializeDP(weight_elements.length, capacity, -1)
                 )
         );
+
         //Print the value of Knapsack Bottom Up Approach with Optimized space complexity
         System.out.println( '\n'+
                 obj.optimizedKnapsack(
@@ -60,8 +61,10 @@ public class Main {
                         weight_values,
                         capacity,
                         weight_elements.length,
-                        obj.initializeSingleDP(capacity, -1)
+                        ul.initializeSingleDP(capacity, -1)
                 )
         );
-    }
+
+         **/
+   }
 }
